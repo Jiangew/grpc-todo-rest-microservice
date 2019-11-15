@@ -238,7 +238,7 @@ func (s *toDoServiceServer) ReadAll(ctx context.Context, req *v1.ReadAllRequest)
 	defer rows.Close()
 
 	var reminder time.Time
-	list := []*v1.ToDo{}
+	var list []*v1.ToDo
 	for rows.Next() {
 		td := new(v1.ToDo)
 		if err := rows.Scan(&td.Id, &td.Title, &td.Description, &reminder); err != nil {
